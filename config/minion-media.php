@@ -5,6 +5,7 @@ return array(
 	 * Use symlinks when possible (used when compiling files)
 	 * Disable this if your filesystem has issues with the `ln` command
 	 */
+	'base_dir' => 'media',
 	'symlinks' => TRUE,
 	'compilers' => array(
 		'js' => array(

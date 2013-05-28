@@ -8,8 +8,8 @@ class Task_Media_Compile extends Minion_Task {
 
 	protected function _execute(array $config)
 	{
-		$media = Arr::flatten(Kohana::list_files('media'));
 		$module_config = Kohana::$config->load('minion-media');
+		$media = Arr::flatten(Kohana::list_files($module_config->base_dir));
 		
 		usort($module_config->compilers, array($this, 'sort_compilers'));
 

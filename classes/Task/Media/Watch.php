@@ -12,13 +12,14 @@ class Task_Media_Watch extends Minion_Task {
 	{
 		$start_time = time();
 		$end_time = $start_time + (int) $config['lifetime'];
+		$module_config = Kohana::$config->load('minion-media');
 		$this->compile();
 
 		Minion_CLI::write('Polling for changes');
 
 		while (TRUE)
 		{
-			foreach(Arr::flatten(Kohana::list_files('media')) as $relative => $filepath)
+			foreach(Arr::flatten(Kohana::list_files($module_config->base_dir)) as $relative => $filepath)
 			{
 				if (filemtime($filepath) > $this->_last_compiled_time)
 				{
